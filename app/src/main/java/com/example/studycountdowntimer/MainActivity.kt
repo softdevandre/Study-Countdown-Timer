@@ -25,13 +25,23 @@ class MainActivity : AppCompatActivity() {
         buttonStop = findViewById(R.id.stopButton)
 
 
-        buttonStart.setOnClickListener {
 
+        buttonStart.setOnClickListener {
+            if (onRun) {
+                System.currentTimeMillis()
                 val time = String.format("2000")
                 timeInMilliseconds = time.toLong() * 3600000L
                 startTime(timeInMilliseconds)
                 buttonStart.visibility = View.INVISIBLE
                 buttonPause.visibility = View.VISIBLE
+                timeShow.visibility = View.VISIBLE
+                onRun = false
+            } else if (!onRun) {
+                startTime(timeInMilliseconds)
+                cdTimer?.start()
+                buttonStart.visibility = View.INVISIBLE
+                buttonPause.visibility = View.VISIBLE
+            }
         }
 
         buttonPause.setOnClickListener {
@@ -45,10 +55,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private var startMilliseconds = 3600000L
-    private val onRun = true
+
+    private var onRun = true
     private var cdTimer: CountDownTimer? = null
-    var timeInMilliseconds = 0L
+    private var timeInMilliseconds = 0L
 
     private lateinit var timeInput: EditText
     private lateinit var timeShow: TextView
@@ -93,12 +103,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun stopTime() {
         cdTimer?.cancel()
-        timeInMilliseconds = startMilliseconds
         timeInput.visibility = View.VISIBLE
         timeShow.visibility = View.INVISIBLE
         buttonStart.visibility = View.VISIBLE
         buttonPause.visibility = View.INVISIBLE
-        timeInput.text.clear()
+
+
         /**startActivity(Intent.makeRestartActivityTask(this.intent?.component))
         overridePendingTransition(0, 0)
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)**/
@@ -114,7 +124,7 @@ class MainActivity : AppCompatActivity() {
         val hours = timeInMilliseconds / 3600000
         timeShow.text = String.format("%02d:%02d:%02d", hours, minutes, seconds)
         timeInput.visibility = View.INVISIBLE
-        timeInput.text.clear()
+
 
 
     }
