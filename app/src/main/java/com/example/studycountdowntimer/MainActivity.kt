@@ -1,11 +1,8 @@
 package com.example.studycountdowntimer
 
-import android.content.Context
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.view.MotionEvent
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -66,14 +63,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var buttonPause: FloatingActionButton
     private lateinit var buttonStop: FloatingActionButton
 
-    override fun onResume() {
-        super.onResume()
-        onRun
-    }
-    private fun View.hideKeyboard() {
-        val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(windowToken, 0)
-    }
 
     private fun pauseTime() {
         cdTimer?.cancel()
@@ -97,7 +86,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         (cdTimer as CountDownTimer).start()
-        timeInput.hideKeyboard()
+
 
     }
 
@@ -129,10 +118,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        timeInput.hideKeyboard()
-        return super.onTouchEvent(event)
-    }
+
 }
 
 
