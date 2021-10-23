@@ -3,7 +3,6 @@ package com.example.studycountdowntimer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
-import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -15,12 +14,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        timeInput = findViewById(R.id.inputTime)
         timeShow = findViewById(R.id.showTime)
         buttonStart = findViewById(R.id.startButton)
         buttonPause = findViewById(R.id.pauseButton)
-        buttonStop = findViewById(R.id.stopButton)
-
 
 
         buttonStart.setOnClickListener {
@@ -44,12 +40,6 @@ class MainActivity : AppCompatActivity() {
         buttonPause.setOnClickListener {
             pauseTime()
         }
-
-        buttonStop.setOnClickListener {
-            stopTime()
-        }
-
-
     }
 
 
@@ -57,19 +47,9 @@ class MainActivity : AppCompatActivity() {
     private var cdTimer: CountDownTimer? = null
     private var timeInMilliseconds = 0L
 
-    private lateinit var timeInput: EditText
     private lateinit var timeShow: TextView
     private lateinit var buttonStart: FloatingActionButton
     private lateinit var buttonPause: FloatingActionButton
-    private lateinit var buttonStop: FloatingActionButton
-
-
-    private fun pauseTime() {
-        cdTimer?.cancel()
-        buttonPause.visibility = View.INVISIBLE
-        buttonStart.visibility = View.VISIBLE
-
-    }
 
     private fun startTime(timeInSeconds: Long) {
 
@@ -86,25 +66,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         (cdTimer as CountDownTimer).start()
-
-
     }
 
-    private fun stopTime() {
+    private fun pauseTime() {
         cdTimer?.cancel()
-        timeInput.visibility = View.VISIBLE
-        timeShow.visibility = View.INVISIBLE
-        buttonStart.visibility = View.VISIBLE
         buttonPause.visibility = View.INVISIBLE
-
-
-        /**startActivity(Intent.makeRestartActivityTask(this.intent?.component))
-        overridePendingTransition(0, 0)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)**/
+        buttonStart.visibility = View.VISIBLE
 
     }
-
-
 
     private fun updateTextUI() {
 
@@ -112,13 +81,7 @@ class MainActivity : AppCompatActivity() {
         val minutes = (timeInMilliseconds / 60000) % 60
         val hours = timeInMilliseconds / 3600000
         timeShow.text = String.format("%02d:%02d:%02d", hours, minutes, seconds)
-        timeInput.visibility = View.INVISIBLE
-
-
-
     }
-
-
 }
 
 

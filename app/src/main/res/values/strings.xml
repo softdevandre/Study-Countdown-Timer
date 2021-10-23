@@ -4,4 +4,5 @@
     <string name="inputTime">00:00:00</string>
     <string name="pauseButton">pauseButton</string>
     <string name="stopButton">stopButton</string>
+    <string name="startMessage">Press Play to start the countdown</string>
 </resources>
