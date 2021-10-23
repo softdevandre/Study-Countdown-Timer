@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">Study Countdown Timer</string>
     <string name="startButton">startButton</string>
-    <string name="inputTime">00:00:00</string>
     <string name="pauseButton">pauseButton</string>
-    <string name="stopButton">stopButton</string>
-    <string name="startMessage">Press Play to start the countdown</string>
+    <string name="startMessage">2000h 00m 00s</string>
 </resources>

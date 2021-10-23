@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         val seconds = (timeInMilliseconds / 1000) % 60
         val minutes = (timeInMilliseconds / 60000) % 60
         val hours = timeInMilliseconds / 3600000
-        timeShow.text = String.format("%02d:%02d:%02d", hours, minutes, seconds)
+        timeShow.text = String.format("%02dh %02dm %02ds", hours, minutes, seconds)
     }
 }
 
