@@ -11,7 +11,7 @@
         android:id="@+id/showTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/advent_pro_semibold"
+        android:fontFamily="@font/chalkboard"
         android:hint="@string/startMessage"
         android:minWidth="48dp"
         android:minHeight="48dp"
