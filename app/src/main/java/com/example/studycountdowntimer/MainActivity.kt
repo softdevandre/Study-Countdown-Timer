@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         timeShow = findViewById(R.id.showTime)
         buttonStart = findViewById(R.id.startButton)
         buttonPause = findViewById(R.id.pauseButton)
-
+        buttonPause.visibility = View.INVISIBLE
 
         buttonStart.setOnClickListener {
             if (onRun) {
